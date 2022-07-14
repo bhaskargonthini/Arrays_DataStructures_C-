@@ -284,4 +284,40 @@ we find the new leader and checks them and print it if is greater.
 MAXIMUM DIFFERENCE PROBLEM WITH ORDER
 
 Maximum Difference problem is to find the maximum of arr[j] - arr[i] where j>i.
-	
+	int maxDiff(int arr[], int n)
+		{
+			int res = arr[1] - arr[0], minVal = arr[0];
+
+			for(int i = 1; i < n; i++)
+			{
+				
+					res = max(res, arr[i] - minVal);
+					
+					minVal = min(minVal, arr[i]);
+			}
+
+			return res;
+		}
+		approach is to keep tracking of min value in every iterationa and checks with the current difference.
+-----------------------------------------------------------------------------------------------
+FREQUENCIES IN A SORTED ARRAY
+
+
+		void printFreq(int arr[], int n)
+			{
+				int freq = 1, i = 1;
+
+				while(i < n)
+				{
+					while(i < n && arr[i] == arr[i - 1])
+					{
+						freq++;
+						i++;
+					}
+
+					cout<<arr[i - 1] << " " << freq << endl;
+
+					i++;
+					freq = 1;
+				}
+			}
