@@ -168,3 +168,120 @@ int remDups(int arr[], int n)
 		return res;
 	}
 --------------------------------------------------------------------------------
+PROGRAM TO MOVE ALL ZEROES TO THE END OF THE ARRAY:
+
+	Void moveZeroes(int arr[], int n)
+	{
+		int count = 0;
+		for(int i=0;i<n;i++)
+		{
+			if(arr[i]!=0)
+			{
+				swap(arr[i],arr[count]);
+				count++;
+			}
+		}
+		
+	}
+
+-----------------------------------------------------------------------------------
+LEFT ROTATE AN ARRAY BY ONE PLACE:
+
+	void lRotateOne(int arr[], int n)
+		{
+			int temp = arr[0];
+
+			for(int i = 1; i < n; i++)
+			{
+				arr[i - 1] = arr[i];
+			}
+
+			arr[n - 1] = temp;
+		}
+		
+		or we can use swap function to swap every ith element with i+1 element till n-1 iteration in for loop.
+		
+	LEFT ROTATE AN ARRAY BY D PLACES:
+	
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+void reverse(int arr[], int low, int high)
+{
+	while(low < high)
+	{
+		swap(arr[high], arr[low]);
+
+		low++;
+		high--;
+	}
+}   
+
+void leftRotate(int arr[], int d, int n)
+{
+	reverse(arr, 0, d - 1);
+
+	reverse(arr, d, n - 1);
+
+	reverse(arr, 0, n - 1);
+}
+
+
+
+int main() {
+	
+      int arr[] = {1, 2, 3, 4, 5}, n = 5, d = 2;
+
+      cout<<"Before Rotation"<<endl;
+
+       for(int i = 0; i < n; i++)
+       {
+       		cout<<arr[i]<<" ";
+       }
+
+       cout<<endl;
+
+       leftRotate(arr, d, n);
+
+       cout<<"After Rotation"<<endl;
+
+       for(int i = 0; i < n; i++)
+       {
+       		cout<<arr[i]<<" ";
+       }
+    
+}
+-----------------------------------------------------------------------------------------
+LEADERS IN AN ARRAY
+	I/P: arr[] = {7,10,4,3,6,5,2}
+	o/p: 10,6,5,2
+	leaders of an array means the current element is greater than all the elements
+	to its right of the array. Even if there is an element which is same value as the current,
+	it is not considered as leader.
+An efficient approach is to traverse from the right side of the array,
+the last element is always the leader of the array. so we keep checking from the right side with the 
+current leader if it is greater we print the current leader. we repeat the process by changinh the leader everytime 
+we find the new leader and checks them and print it if is greater.
+	void leaders(int arr[], int n)
+		{
+			int curr_ldr = arr[n - 1];
+
+			cout<<curr_ldr<<" ";
+
+			for(int i = n - 2; i >= 0; i--)
+			{
+				if(curr_ldr < arr[i])
+				{
+					curr_ldr = arr[i];
+
+					cout<<curr_ldr<<" ";
+				}
+			}
+		}
+-----------------------------------------------------------------------------------------------------------------------------
+MAXIMUM DIFFERENCE PROBLEM WITH ORDER
+
+Maximum Difference problem is to find the maximum of arr[j] - arr[i] where j>i.
+	
