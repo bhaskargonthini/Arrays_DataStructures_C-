@@ -444,8 +444,6 @@ number is 2.
 
 There are two solutions: a simplem solution with more time:
 
-kaganesh12
-1 week ago
 
 easiest way to do this is as follows:
 
@@ -519,3 +517,63 @@ int segregateArr (int arr[], int n)
         return findMissingPositive(arr+shift, n-shift); 
     } 
 ----------------------------------------------------------------------------------------------------------------------------------
+REARRANGE ARRAY ALTERNATIVELY:
+	
+Input:
+N = 6
+arr[] = {1,2,3,4,5,6}
+Output: 6 1 5 2 4 3
+Explanation: Max element = 6, min = 1, 
+second max = 5, second min = 2, and 
+so on... Modified array is : 6 1 5 2 4 3.
+
+
+														DIVIDENT = DIVISOR*QUOTIENT+REMINDER // can store two values at same index
+																divisor = max element of array+1
+																quotient: new value to be stored
+																reminder: original value.
+																
+																we get the original value by taking modulus of max+1 element.
+																we get old value by taking floor value after dividing with max+1 element.
+														eg: 1 2 3 4 5 6  // max = 6 max+1 = 6+1 = 7
+															index 0 = old value = 1
+																	  new value to be placed = 6
+																	7*6+1 = 43 is value at index 0 now.
+																	if we want new value, divide it by max+1 element = 43/7 = 6
+																	if we want old value do modulus = 43%7 = 1.
+
+
+void rearrange(long long *arr, int n) 
+    { 
+    	
+    	// Your code here
+    	//Initialising index of first minimum and first maximum element. 
+    	int max_idx = n - 1, min_idx = 0; 
+    
+    	//Storing maximum element of array. 
+    	int max_elem = arr[n - 1] + 1; 
+    
+    	for (int i = 0; i < n; i++) { 
+    		//At even index, we have to put maximum elements in decreasing order. 
+    		if (i % 2 == 0) { 
+    			arr[i] += (arr[max_idx] % max_elem) * max_elem;
+    			//Updating maximum index.
+    			max_idx--; 
+    		} 
+    
+    		//At odd index, we have to put minimum elements in increasing order. 
+    		else { 
+    			arr[i] += (arr[min_idx] % max_elem) * max_elem;
+    			//Updating minimum index.
+    			min_idx++; 
+    		} 
+    	} 
+    
+    	//Dividing array elements by maximum element to get the result. 
+    	for (int i = 0; i < n; i++) 
+    		arr[i] = arr[i] / max_elem;
+    	
+    	
+    	
+    	 
+    }
