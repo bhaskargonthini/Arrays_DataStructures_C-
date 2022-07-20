@@ -322,7 +322,8 @@ FREQUENCIES IN A SORTED ARRAY
 				}
 			}
 -------------------------------------------------------------------------------------------------------------
-TRAPPING RAIN WATER
+TRAPPING RAIN WATER:
+
 
 int getWater(int arr[], int n)
 	{
@@ -351,7 +352,163 @@ int getWater(int arr[], int n)
 		}
 		return res;
 	}
+-----------------------------------------------------------------------------------------------------------------------
+
+STOCK BUY AND SELL:
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+int maxProfit(int price[], int n)
+{
+	int profit = 0;
+
+	for(int i = 1; i < n; i++)
+	{
+		if(price[i] > price[i - 1])
+			profit += price[i] - price[i -1];
+	}
+
+	return profit;
+
+}
+
+
+int main() {
 	
+      int arr[] = {1, 5, 3, 8, 12}, n = 5;
+
+      cout<<maxProfit(arr, n);
+    
+}
+-------------------------------------------------------------------------------------------------------------------------
+MAXIMUM CONSECUTIVE 1'S IN A BINARY ARRAY.
+two methods with same time complexity but different logics.
+int maxConsecutiveOnes(int arr[], int n)
+{
+	int res = 0, curr = 0;
+
+	for(int i = 0; i < n; i++)
+	{
+		if(arr[i] == 0)
+			curr = 0;
+		else
+		{
+			curr++;
+
+			res = max(res, curr);
+		}
+	}
+	
+	return res;
+}
+
+By BIT MAGIC:
+int maxConsecutiveOnes(int n)
+    {
+        // code here
+        int count = 0, max = 0;
+        while(n>0){
+            if(n&1) count++;
+            else count = 0;
+            if(count>max) max = count;
+            n = n>>1;
+        }
+        return max;
+    }
+-----------------------------------------------------------------------------
+MAXIMUM SUM SUB ARRAY: 
+
+
+										KADANE’S ALGORITHM:
+										
+										
+
+{-5, 1, -2, 3, -1, 2, -2}
+
+the efficient approach here is to find the max sub array sum for every ith index 
+by adding the previous maxending(i) with the current index and compares it and
+chnages the maxending() if it is greater than the current.
+
+maxEnding(i) = max(maxEnding(i-1)+arr[i], arr[i])
+
+{-5, 1, -2, 3, -1, 2, -2}
+-5 = -5, maxending = -5
+1 = 1+(-5) = -4 = max(-4,1) = 1
+-2 = -2+1 = -1 = max(-1, -2) = -1
+3  = 3+-1 = 2 = max(2,3) = 3
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+int maxSum(int arr[], int n)
+{
+	int res = arr[0];
+
+	int maxEnding = arr[0];
+
+	for(int i = 1; i < n; i++)
+	{
+		maxEnding = max(maxEnding + arr[i], arr[i]);
+
+		res = max(maxEnding, res);
+	}
+	
+	return res;
+}
+
+
+
+int main() {
+	
+     int arr[] = {1, -2, 3, -1, 2}, n = 5;
+
+     cout<<maxSum(arr, n);
+    
+}
+
+-----------------------------------------------------------------------------
+LONGEST EVEN ODD SUB ARRAY
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+int maxEvenOdd(int arr[], int n)
+{
+	int res = 1;
+	int curr = 1;
+
+	for(int i = 1; i < n; i++)
+	{
+			if((arr[i] % 2 == 0 && arr[i - 1] % 2 != 0)
+			   ||(arr[i] % 2 != 0 && arr[i - 1] % 2 == 0))
+				{
+					curr++;
+
+					res = max(res, curr);
+				}
+				else
+					curr = 1;
+	}
+	
+	return res;
+}
+
+
+
+int main() {
+	
+     int arr[] = {5, 10, 20, 6, 3, 8}, n = 6;
+
+     cout<<maxEvenOdd(arr, n);
+    
+}
+
 	
 	
 	
@@ -528,7 +685,8 @@ second max = 5, second min = 2, and
 so on... Modified array is : 6 1 5 2 4 3.
 
 
-														DIVIDENT = DIVISOR*QUOTIENT+REMINDER // can store two values at same index
+														DIVIDENT = DIVISOR*QUOTIENT+REMINDER
+																divident = modified value in array.							// can store two values at same index
 																divisor = max element of array+1
 																quotient: new value to be stored
 																reminder: original value.
@@ -541,6 +699,9 @@ so on... Modified array is : 6 1 5 2 4 3.
 																	7*6+1 = 43 is value at index 0 now.
 																	if we want new value, divide it by max+1 element = 43/7 = 6
 																	if we want old value do modulus = 43%7 = 1.
+															
+eg: 1 2 3 4 5 6
+	6 1 5 2 4 3
 
 
 void rearrange(long long *arr, int n) 
@@ -556,8 +717,13 @@ void rearrange(long long *arr, int n)
     	for (int i = 0; i < n; i++) { 
     		//At even index, we have to put maximum elements in decreasing order. 
     		if (i % 2 == 0) { 
-    			arr[i] += (arr[max_idx] % max_elem) * max_elem;
-    			//Updating maximum index.
+    			arr[i] += (arr[max_idx] % max_elem) * max_elem; 
+				// IMP: The reason we are doing modulus before multiplying is we might have elements that are already modified,
+				so when we do modulus we get original value in that so we do modulus. eg: at 1th index we need 1(0th index) which is original value but
+				since the value at 0th index is already modified and now has 43 value we do modulus and take the reminder which "1" is oroiginal value
+				similarly we continue the process.
+																		
+				//Updating maximum index.
     			max_idx--; 
     		} 
     
