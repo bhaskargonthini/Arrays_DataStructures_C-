@@ -763,6 +763,32 @@ int maxSum(int arr[], int n, int k)
 	return max_sum;
 }
 
+another approach:
+vector<int> subarraySum(int arr[], int n, long long s)
+    {
+        // Your code here
+        
+        long long sum = 0;
+        int l=0, r=0;
+        
+        for(int i=0; i<n; i++){
+            sum += arr[i];
+            r++;
+            
+            if(sum > s){
+                while(sum > s and r>l){
+                    sum -= arr[l];
+                    l++;
+                }
+            }
+            if(sum == s and l!=r){
+                return {l+1, r};
+            }
+        }
+        
+        return {-1};
+    }
+
 Variation of the problem:
 
 FIND SUBARRAY WITH GIVEN SUM: Given and unsorted array of non negative integers. Find if there is a sub array with given sum.(CONTIGOUS ElementS ONLYTWO)
