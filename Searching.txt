@@ -364,12 +364,12 @@ int main() {
 
 	int x = 4;
 
-	cout << search(arr, x);
+	cout << search(arr,x);
 
 	return 0;
 }
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-SEARCH IN SORTED ROTATED ARRAY
+SEARCH IN SORTED ROTATED ARRAY.
 
 This video talks about O(Log n) approach to search an element in a sorted and rotated array.
 
