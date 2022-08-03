@@ -289,7 +289,7 @@ int main() {
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 SQUARE ROOT: Using binary search.
 
-Given an integer, we need to find floor of its square root. This video talks about two methods.
+Given an integer, we need to find floor of its square root. 
 
 int sqRootFloor(int x)
 {
