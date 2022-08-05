@@ -33,7 +33,6 @@ int main() {
     int arr[] = {10, 20, 30, 40, 50, 60}, n = 6;
 
 	int x = 25;
-	
 	cout<<bSearch(arr, n, x);
 	return 0;
 }
