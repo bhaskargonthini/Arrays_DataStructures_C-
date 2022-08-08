@@ -565,4 +565,70 @@ int main()
 	// If we reach here, then no triplet was found 
 	return false; 
 } 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Repeating Elements Part (1): we create a boolean array where we mark the indexes of respective elements of original arra with true and check if the
+element is true, if it is true then break the loop and returns the index.
+int repeat(int arr[], int n)
+{
+	bool visit[n];
+	
+	memset(visit, false, sizeof(visit));
+	
+	for(int i = 0; i < n; i++)
+	{
+		if(visit[arr[i]])
+			return arr[i];
+		visit[arr[i]] = true;
+	}
+
+	return -1;
+}
+
+Repeating Elements Part (2):
+#include <iostream>
+#include <cmath>
+#include <bits/stdc++.h> 
+#include <climits>
+#include <deque>
+using namespace std;
+
+
+
+int repeat(int arr[], int n)
+{
+	int slow = arr[0], fast = arr[0];
+
+	do{
+		slow = arr[slow];
+		fast = arr[arr[fast]];
+	
+	}while(slow != fast);
+	
+	slow = arr[0];
+
+	while(slow != fast)
+	{
+		slow = arr[slow];
+		fast = arr[fast];
+	}
+	return slow;
+}
+
+
+int main() {
+    
+
+ int arr[] = {1, 3, 2, 4, 6, 5, 7, 3}, n= 8;
+
+ cout << repeat(arr, n);
+
+	return 0;
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Allocate Minimum Pages (Naive Method):
+
+
+
 
