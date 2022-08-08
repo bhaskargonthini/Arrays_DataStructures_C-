@@ -460,3 +460,72 @@ int majorityElement(int a[], int size)
     }
     
     There are other approaches like Binary search tree and hashing approcah. Refer this link: https://practice.geeksforgeeks.org/batch-problems/majority-element-1587115620/0/?track=DSASP-Searching&batchId=145#
+    
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------------TWO POINTER APPROACH:
+     For unsorted arrays, finding the pair which has sum equals to given sum, we can go for hashing technique which takes O(n) extra space but if the array is already sorted we can use two pointer approach.
+     
+     For unsorted array:
+     Find pair in unsorted array which gives sum X(using hashing)
+     // C++ program to check if given array 
+// has 2 elements whose sum is equal 
+// to the given value 
+#include <bits/stdc++.h> 
+
+using namespace std; 
+
+void printPairs(int arr[], int arr_size, int sum) 
+{ 
+	unordered_set<int> s; 
+	for (int i = 0; i < arr_size; i++) { 
+		int temp = sum - arr[i]; 
+
+		if (s.find(temp) != s.end()) 
+			cout << "Pair with given sum " << sum << " is (" << arr[i] << ", " << temp << ")" << endl; 
+
+		s.insert(arr[i]); 
+	} 
+} 
+
+/* Driver program to test above function */
+int main() 
+{ 
+	int A[] = { 1, 4, 45, 6, 10, 8 }; 
+	int n = 16; 
+	int arr_size = sizeof(A) / sizeof(A[0]); 
+
+	// Function calling 
+	printPairs(A, arr_size, n); 
+
+	return 0; 
+} 
+
+
+For sorted array:Find pair in sorted array which gives sum X(two pointer approach)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isPresent(int arr[], int n, int sum)
+{
+    int l = 0, h = n-1;
+    int mid;
+    while(l <= h)
+    {
+        if(arr[l] + arr[h] == sum)
+          return true;
+        else if(arr[l] + arr[h] > sum)
+             h--;
+        else l++;
+    }
+    return false;
+}
+
+int main()
+{
+    int arr[] = {2, 3, 7, 8, 11};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int sum = 14;
+    
+    cout << isPresent(arr, n, sum);
+}
+ 
