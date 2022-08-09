@@ -627,7 +627,9 @@ int main() {
 }
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Allocate Minimum Pages (Naive Method):
+Allocate Minimum Pages (Naive Method): popular interview question.
+
+
 
 
 
