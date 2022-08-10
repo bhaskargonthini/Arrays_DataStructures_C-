@@ -632,6 +632,26 @@ Allocate Minimum Pages (Naive Method): popular interview question.
 
 ====================================================================================================================================================================IMPORTANT PROBLEMS ON SEARCHING
 
+Count only repeated:
+We can find number of times a number is repeating by simply finding the count
+
+count = n-(arr[n-1]-arr[0]); if this count is 1 then there is no repeating element in the array. If it is greater than 1 then there is one repeating element and the number of times it is repeating is the count.
+
+pair<int, int> findRepeating(int *arr, int n){
+        //code here
+        int rep, count = 0,low = 0, high = n-1;
+        count = n-(arr[n-1]-arr[0]);
+        if(count == 1) return {-1,-1};
+        while(low<=high){
+            int mid = (low+high)/2;
+            if(arr[mid] == arr[mid-1] || arr[mid] == arr[mid+1])
+            return {arr[mid], count};
+            //else if(mid-(arr[mid]-arr[low]) == 0) low = mid+1;
+            else if(arr[mid]>=mid+arr[0]) low = mid+1;      // we can find whether the left half contains the repeated element or not. since the elemenets are 
+	    						    //consecutive so if arr[mid]>=mid+arr[0] then there is no repeating element in the first half.
+            else high = mid-1;
+        }
+
 
     
 
