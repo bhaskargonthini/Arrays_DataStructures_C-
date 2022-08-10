@@ -43,9 +43,9 @@ Steps: Arr = [10,20,30,40,50]
 		arr[mid]>x, x = 10 the value will be in the first half
 	case3:
 		arr[mid]<x, x = 50, the value will be in the second half.
-	In this way we can optimize the solution.
+		In this way we can optimize the solution.
 
-Recursive Binary search: Recursive approach.
+Recursive Binary search: Recursive approach
 
 #include <iostream>
 using namespace std;
