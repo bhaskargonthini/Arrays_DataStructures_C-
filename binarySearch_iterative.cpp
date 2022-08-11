@@ -19,7 +19,6 @@ int bSearch(int arr[], int n, int x)
 		else
 			low = mid + 1;
 	}
-
 	return -1;
 }
 
