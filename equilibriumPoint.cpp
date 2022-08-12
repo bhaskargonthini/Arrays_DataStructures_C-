@@ -8,7 +8,6 @@ class Solution{
     // n: size of array
     int equilibriumPoint(long long a[], int n) {
     
-        // Your code here
         int sum = 0, lsum = 0;
         for(int i=0;i<n;i++) sum+= a[i];
         for(int i=0;i<n;i++){
