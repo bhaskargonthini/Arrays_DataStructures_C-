@@ -461,7 +461,8 @@ int majorityElement(int a[], int size)
     
     There are other approaches like Binary search tree and hashing approcah. Refer this link: https://practice.geeksforgeeks.org/batch-problems/majority-element-1587115620/0/?track=DSASP-Searching&batchId=145#
     
-    ----------------------------------------------------------------------------------------------------------------------------------------------------------------TWO POINTER APPROACH:
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    TWO POINTER APPROACH:
      For unsorted arrays, finding the pair which has sum equals to given sum, we can go for hashing technique which takes O(n) extra space but if the array is already sorted we can use two pointer approach.
      
      For unsorted array:
