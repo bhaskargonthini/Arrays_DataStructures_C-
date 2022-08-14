@@ -227,3 +227,40 @@ best case: O(n) wjen it is already sorted
 
 MERGE SORT ALGORITHM:
 
+-- its a divide and conquer algorithm(divide, conquer and merge)
+-- stable algorithm
+-- theta(nlogn) time and O(n) aux space
+-- well suited for linked lists. works in O(n) aux space
+-- used in external sorting
+--In general for arrays, quicksort outperforms merge sort
+
+
+MERGE TWO SORTED ARRAYS:
+
+I/P: A[] = {10,15,20}
+     B[] = {5,6,6,15}
+O/P: 5 6 6 10 15 15 20
+
+This can be done effectively by the idea of two pointer approach.
+pointer i for the array A[] and pointer j for array B[]
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+void merge(int a[], int b[], int m, int n){
+    
+    int i=0,j=0;
+    while(i<m && j<n){
+        if(a[i]<b[j])
+            cout<<a[i++]<<" ";
+        else
+            cout<<b[j++]<<" ";
+    }
+    while(i<m)
+        cout<<a[i++]<<" ";
+    while(j<n)
+        cout<<b[j++]<<" ";    
+}
+
+
