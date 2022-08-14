@@ -335,5 +335,47 @@ int main() {
 }
 
 
+working of recursive calls:
+void mergeSort(int arr[],int l,int r){
+    if(r>l){
+        int m=l+(r-l)/2;
+        mergeSort(arr,l,m);
+        mergeSort(arr,m+1,r);
+        merge(arr,l,m,r);
+    }
+}
+ 
+ for array [10,5,30,15,7]
+ m = l+r/2 = 2
+ 
+ 
+                              10  5  30  15  7
+                              l=0    m=2     r=4
+			    /			\
+		     10  5  30		        15      7			
+		    l=0 m=1 r=2		       l=3 m=3 r=4
+		   /	        \		/         \
+		10  5 		 30          15           7
+	       l=m=0 r=1         l=2 r=2   l=3 r=3       l=r=4
+	      /       \
+	    10         5
+	   l=0 r=0    l=1 r=1
+
+mergesort() function will just calls the array recursively by breaking it into parts.
+merge() function did the actual sorting
+
+After completing the calls, we get the below modified array.
+	                       5  7  10  15  30
+                              l=0    m=2     r=4
+			    /			\
+		     5  10  30		        7      15			
+		    l=0 m=1 r=2		       l=3 m=3 r=4
+		   /	        \		/         \
+		5  10 		 30          15           7
+	       l=m=0 r=1         l=2 r=2   l=3 r=3       l=r=4
+	      /       \
+	    5         10
+	   l=0 r=0    l=1 r=1
+			   
 
 
