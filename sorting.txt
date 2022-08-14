@@ -376,6 +376,8 @@ After completing the calls, we get the below modified array.
 	      /       \
 	    5         10
 	   l=0 r=0    l=1 r=1
-			   
+
+Time complexity of merge sort algorithm is theta(nlogn)
+Auxilary space is theta(n) space
 
 
