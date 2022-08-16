@@ -8,7 +8,6 @@ int firstOcc(int arr[], int n, int x)
 	while(low <= high)
 	{
 		int mid = (low + high) / 2;
-
 		if(x > arr[mid])
 			low = mid + 1;
 
