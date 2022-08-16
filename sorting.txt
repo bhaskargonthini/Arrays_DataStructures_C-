@@ -267,6 +267,9 @@ void merge(int a[], int b[], int m, int n){
 Merge function of Merge sort
 This video is a complex version of the previously discussed problem on Merge Sort. Here we take a single array with three points namely, the lower, the middle and the highest point. The elements from the lower to the middle are sorted and the elements from the (middle+1) to the higher are sorted. The task is to merge these two sorted parts into one.
 
+
+In this function we may be asked to sort some part of the array in which we should first know the indexes of this array like leftmost index, mid index and right most index. so we should be aware of implementing the logic by considering this.
+
 void merge(int arr[], int l, int m, int h){
     
     int n1=m-l+1, n2=h-m;
