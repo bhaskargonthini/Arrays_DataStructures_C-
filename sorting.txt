@@ -498,6 +498,18 @@ int partition(int arr[], int l, int h)
     }
 }
 
+QUICKSORT ALGORITHM:
+
+--divide and conquer algorithm
+--worst case time:O(n2)
+--despite O(n2) worst case, it is considered faster because of the following reasons:
+	-In place
+	-cache friendly
+	-average case is O(nlogn)
+	-Tail recursive
+-- partition is key function(Naive,lomuto,hoares)
+
+
 
 
 
