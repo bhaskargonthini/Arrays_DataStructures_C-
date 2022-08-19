@@ -647,8 +647,39 @@ After calling the qsort function the tree looks like:
  Hoares partition is unstable but 3 times faster than lomuto where lomuto is stable. But naive partition is stable but takes more space and traversals.
 
 
+Best case quicsort using hoares: theta(nlogn) //chech video for more analysis info
+worst case quicksort: theta(n2)
+Space analysis:
+worst case: theta(n)
+best case: theta(logn)
 
+TAIL CALL ELIMINATION IN QUICK SORT: might ask in interviewes.
+int partition(int arr[], int l, int h)
+{   
+    int pivot=arr[l];
+    int i=l-1,j=h+1;
+    while(true){
+        do{
+            i++;
+        }while(arr[i]<pivot);
+        do{
+            j--;
+        }while(arr[j]>pivot);
+        if(i>=j)return j;
+        swap(arr[i],arr[j]);
+    }
+}
 
+void qSort(int arr[],int l,int h){
+    Begin:
+    if(l<h){
+        int p=partition(arr,l,h);
+        qSort(arr,l,p);
+        l=p+1;
+        goto Begin;
+    }
+}
+ 
 
 
 
