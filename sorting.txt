@@ -426,8 +426,9 @@ int main() {
 But lomuto and hoare algorithms have only one traversal with the same time complexity but these two algorithms are not stable.
 
 LOMUTO ALGORITHM: Lomuto partition partitions an array around the array in O(n)time with O(1) extra space.
+It takes the last element as its pivot and it places that element in its correct position inthe array and keeps all the smaller elements to left of it in ANY ORDER and all the greater elements to its right IN ANY ORDER.
 
-It always ah pivot element to be the last element of the array. And it maintains two variables to keep track of smaller elements window and the indexes of the array. 
+It always has pivot element to be the last element of the array. And it maintains two variables to keep track of smaller elements window and the indexes of the array. 
 For the input: {10,80,30,90,40,50,70}
 n = 7
 l = 0
@@ -508,6 +509,70 @@ QUICKSORT ALGORITHM:
 	-average case is O(nlogn)
 	-Tail recursive
 -- partition is key function(Naive,lomuto,hoares)
+
+QUICKSORT USING LOMUTO PARTITION:
+#include <bits/stdc++.h>
+using namespace std;
+
+int iPartition(int arr[], int l, int h)
+{   
+    int pivot=arr[h];
+    int i=l-1;
+    for(int j=l;j<=h-1;j++){
+        if(arr[j]<pivot){
+            i++;
+            swap(arr[i],arr[j]);
+        }
+    }
+    swap(arr[i+1],arr[h]);
+    return i+1;
+}
+
+void qSort(int arr[],int l,int h){
+    if(l<h){
+        int p=iPartition(arr,l,h);  // it finds the correct position of the pivot element and
+        qSort(arr,l,p-1);	    // sort all the smaller elemenst on its left and
+        qSort(arr,p+1,h);	    // sorts all the larger elements on its right.(recursive calls)
+    }
+}
+ 
+int main() {
+	
+    int arr[]={8,4,7,9,3,10,5};
+	
+	int n=sizeof(arr)/sizeof(arr[0]);
+	
+	qSort(arr,0,n-1);
+	
+	for(int x: arr)
+	    cout<<x<<" ";
+}
+
+lets take the array of {8 4 7 9 3 10 5}
+
+						qsort(0,6)
+					      8 4 7 9 3 10 5  // 4 3 5 9 8 10 7 (after lomuto partition for qsort(0,6))
+					     / 		    \
+					 qsort(0,1)        qsort(3,6)
+					 4 3 		    9 8 10 7
+					/   \	            /      \
+			     qsort(0,-1)   qs(1,1)        qs(3,2)   qs(4,6)
+				  4   		3		   8 10 9
+								  /       \
+							       qs(4,4)	 qs(6,6)  
+							       
+				After the completion of the qsort function:
+				
+					         qsort(0,6)
+					      4 3 5 9 8 10 7  
+					     / 		    \
+					 qsort(0,1)        qsort(3,6)
+					 3 4 		    9 8 10 7
+					/   \	            /      \
+			     qsort(0,-1)   qs(1,1)        qs(3,2)   qs(4,6)
+				     				   8 10 9
+								  /       \
+							       qs(4,4)	 qs(6,6)  
 
 
 
