@@ -567,18 +567,84 @@ lets take the array of {8 4 7 9 3 10 5}
 					      4 3 5 9 8 10 7  
 					     / 		    \
 					 qsort(0,1)        qsort(3,6)
-					 3 4 		    7 8 10 9
+					 3 4 		    7 8 9 10
 					/   \	            /      \
 			     qsort(0,-1)   qs(1,1)        qs(3,2)   qs(4,6)
-				     				   8 10 9
+				     				   8 9 10
 								  /       \
 							       qs(4,4)	 qs(6,6)  
 
 
+QUICKSORT USING HOARES PARTITION:
+#include <bits/stdc++.h>
+using namespace std;
+
+int partition(int arr[], int l, int h)
+{   
+    int pivot=arr[l];
+    int i=l-1,j=h+1;
+    while(true){
+        do{
+            i++;
+        }while(arr[i]<pivot);
+        do{
+            j--;
+        }while(arr[j]>pivot);
+        if(i>=j)return j;
+        swap(arr[i],arr[j]);
+    }
+}
+
+void qSort(int arr[],int l,int h){
+    if(l<h){
+        int p=partition(arr,l,h);
+        qSort(arr,l,p); // this is where hoares qsort differs from lomuto qsort functionqsort(arr,l,p-1). Lomuto already fixes the pivot and starts the partitions on  
+        qSort(arr,p+1,h); // left and right side but in hoares pivot is not fixed so it includes it.
+    }
+}
+ 
+int main() {
+	
+    int arr[]={8,4,7,9,3,10,5};
+	
+	int n=sizeof(arr)/sizeof(arr[0]);
+	
+	qSort(arr,0,n-1);
+	
+	for(int x: arr)
+	    cout<<x<<" ";
+}
+
+In hoares partition, we consider first element as pivot and keeps all the elements smaller than pivot on left side and all the elements greater than pivot on right side.
 
 
 
-
+      							qsort(0,6)
+					             8 4 7 9 3 10 5  // 4 3 5 9 8 10 7 (after lomuto partition for qsort(0,6))
+					            / 		    \
+					        qsort(0,3)        qsort(4,6)
+					        5 4 7 3  	    9 10 8
+					         /   \	            /      \
+			                qsort(0,1)   qs(2,3)     qs(4,4)   qs(5,6)
+				          3 4   	7 5	 8	      10 9
+					/    \	      /    \		     /     \
+				    qs(0,0)  qs(1,1)  5	    7	  qs(2,2)  qs(3,3)  qs(5,5)  qs(6,6)  
+					3	 4    		  	       9        10
+					
+After calling the qsort function the tree looks like:
+							qsort(0,6)
+					            5 4 7 3 9 10 8  // 4 3 5 9 8 10 7 (after lomuto partition for qsort(0,6))
+					            / 		    \
+					        qsort(0,3)        qsort(4,6)
+					        3 4 7 5  	    8 9 10
+					         /   \	            /      \
+			                qsort(0,1)   qs(2,3)     qs(4,4)   qs(5,6)
+				          3 4   	5 7	 8	      9 10
+					/    \	      /    \		     /     \
+				    qs(0,0)  qs(1,1)  5	    7	  qs(2,2)  qs(3,3)  qs(5,5)  qs(6,6)  
+					3	 4    		  	       9        10
+										
+ Hoares partition is unstable but 3 times faster than lomuto where lomuto is stable. But naive partition is stable but takes more space and traversals.
 
 
 
