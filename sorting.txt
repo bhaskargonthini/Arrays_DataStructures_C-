@@ -425,6 +425,29 @@ int main() {
 
 But lomuto and hoare algorithms have only one traversal with the same time complexity but these two algorithms are not stable.
 
+LOMUTO ALGORITHM: Lomuto partition partitions an array around the array in O(n)time with O(1) extra space.
+
+It always ah pivot element to be the last element of the array. And it maintains two variables to keep track of smaller elements window and the indexes of the array. 
+For the input: {10,80,30,90,40,50,70}
+n = 7
+l = 0
+h = n-1 = 6, pivot = arr[h] = 70
+j = 0
+i = l-1 = -1
+
+i=-1, j = 0  => {10,80,30,90,40,40,70} swap(arr[i],arr[j]) = 10 swaps by itself here.
+
+smallest elements window increases as i++
+i = 0, j =1 => {10,80,30,90,40,50,70} since 80>70 no swapping is done
+i = 0, j = 2 =>{10,30,80,90,40,50,70} 30<70 swaps(80,30)
+i = 1, j = 3 => {10,30,80,90,40,50,70} 90>70
+i = 1, j = 4 => {10,30,40,90,80,50,70} 40<70 swaps(80,40)
+i = 2, j = 5 => {10,30,40,50,80,90,70} 50<70 swaps(90,50)
+i = 3, j = 6 => loops stopes here
+all the smallest elemenst window is upto index 3 and all the gretaest elements are from index 4 to index 5.
+after the loop, we swaps the pivot element with next greatest element
+{10,30,40,50,70,80,90}
+index of pivot is now at index 4.
 
 
 
@@ -563,7 +586,6 @@ int main() {
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Union of Two Sorted Arrays 
-Easy Accuracy: 46.19% Submissions: 75608 Points: 2
 Union of two arrays can be defined as the common and distinct elements in the two arrays.
 Given two sorted arrays of size n and m respectively, find their union.
 
@@ -615,6 +637,8 @@ vector<int> findUnion(int arr1[], int arr2[], int n, int m)
         }
         return res;
     }
+    
+    
     
   
 
