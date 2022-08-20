@@ -1,6 +1,6 @@
 Sorting in C++
 
-sorting in arrays:
+SORTING IN ARRAYS:
 
 #include <iostream>
 #include <algorithm>
