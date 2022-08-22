@@ -1,4 +1,4 @@
-Sorting in C++
+SORTING IN C++(STLS)
 
 SORTING IN ARRAYS:
 
