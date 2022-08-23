@@ -679,6 +679,38 @@ void qSort(int arr[],int l,int h){
         goto Begin;
     }
 }
+
+Kth SMALLEST ELEMENT. 
+
+Given an unsorted array, we need to find the kth smallest element. If the array is already sorted we can just print the k-1th element. But if we have unsorted array we need to sort the array and find the k-1th element but it takes O(nlogn) time. But if we use lomuto partition idea which might takes O(n2) but will works efficiently in average case.
+
+int partition(int arr[], int l, int h)
+{   
+    int pivot=arr[h];
+    int i=l-1;
+    for(int j=l;j<=h-1;j++){
+        if(arr[j]<pivot){
+            i++;
+            swap(arr[i],arr[j]);
+        }
+    }
+    swap(arr[i+1],arr[h]);
+    return i+1;
+}
+
+int kthSmallest(int arr[],int n,int k){
+    int l=0,r=n-1;
+    while(l<=r){
+        int p=partition(arr,l,r);
+        if(p==k-1)
+            return p;
+        else if(p>k-1)
+            r=p-1;
+        else
+            l=p+1;
+    }
+    return -1;
+}
  
 
 
