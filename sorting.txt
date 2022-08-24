@@ -749,6 +749,77 @@ int minDiff(int arr[],int n,int m){
         res=min(res,arr[i+m-1]-arr[i]);
     return res;
 }
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Sort an Array with two types of elements: These type of problems.
+
+eg:
+1) segregate positive and negative:
+	I/P: ARR[] = {15,-3,-2,18}
+	O/P: {-3,-2,15,18}
+2) Segregate Even and odd:
+	I/P: ARR[] = {15,14,13,12}
+	O/P: {14,12,15,13} even should be together
+3) Sort Binary array:
+	I/P: ARR[] = {0,1,1,1,0}
+	O/P: {0,0,1,1,1}
+4) Sort 0's, 1's and 2's:
+	I/P: ARR[] = {1,0,2,1,0,1}
+	O/P: {0,0,1,1,1,2}
+	
+A naive solution requires more than 1 traversal of the array with atleast O(n) extra space
+An efficient approach would be mainly by a variation of partition of quicksort.
+	Hoares or lomuto partition can solve this in theta(n) time and theta(1) aux space.
+
+segregate positive and negative:
+	I/P: ARR[] = {15,-3,-2,18}
+	O/P: {-3,-2,15,18}
+	
+void sort(int arr[],int n){
+    int i=-1,j=n;
+    while(true)
+    {
+        do{i++;}while(arr[i]<0);
+        do{j--;}while(arr[j]>=0);
+        if(i>=j)return;
+        swap(arr[i],arr[j]);
+    }
+}
+
+Sort Binary array:
+	I/P: ARR[] = {0,1,1,1,0}
+	O/P: {0,0,1,1,1}
+	
+void binSort(int A[], int N)
+    {
+       //Your code here
+       int i = -1, j = N;
+       while(true){  // infinite loop cant work like while(i<=j) because the elements in which indexes(i>j) will be swaped and gets wrong result.
+           do{i++;} while(A[i] == 0);
+           do{j--;} while(A[j] == 1);
+           if(i>=j) break;
+           swap(A[i],A[j]); // this line wont execute once the condition of i>=j comes true, so it wont swaps the last iteration.
+       }
+       
+    }
+    
+  we can also do this by two pointer approach.
+  void binSort(int A[], int N)
+    { 
+       int low = 0, high = N-1;
+        while(low<=high){
+            if(A[low]>A[high]){
+                swap(A[low], A[high]);
+                low++;
+                high--;
+            }
+            else if(A[high] == 0 && A[low] == 0){
+                low++;
+            }
+            else high--;
+        }
+    }
+
 
 
 
