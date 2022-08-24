@@ -719,10 +719,37 @@ Minimum Difference in an Array:
     int res = INT_MAX;
     
     for(int i = 1; i < n; i++){
-        res = min(res, arr[i] - arr[i-1]);
+        res = min(res, arr[i] - arr[i-1]); //
     }
     return res;
 }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Chocolate Distribution Problem:
+array has packets  with number of chocolates
+I/P: {7,3,2,4,9,12,56} , m = 3
+O/P: 2 (3,2,4 => 4-2 = 2)
+
+I/P: {3,4,1,9,56,7,9,12} M = 5
+O/P: 6 (3,4,7,9,9 = > 9-3 = 6) 
+m is number of childern.
+we need to distribute this chocolates with these rules:
+- every child should get 1 packet.
+- we want minimize the minimum chocolates that a child gets and maximum chocoloates that another child gets.
+
+like the difference between the minimum chocolates and maximum chocolates should be minimum.
+
+an efficient approach would be sorting the array first and starts checking the minimum difference in m elements window starting from the first element and takes the min of the t=differences.
+int minDiff(int arr[],int n,int m){
+    if(m>n)
+        return -1;
+    sort(arr,arr+n);
+    int res=arr[m-1]-arr[0];
+    for(int i=0;(i+m-1)<n;i++)
+        res=min(res,arr[i+m-1]-arr[i]);
+    return res;
+}
+
 
 
 
