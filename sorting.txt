@@ -678,8 +678,8 @@ void qSort(int arr[],int l,int h){
         goto Begin;
     }
 }
-
-Kth SMALLEST ELEMENT. 
+-----------------------------------------------------------------------------------------------------------
+Kth SMALLEST ELEMENT:
 
 Given an unsorted array, we need to find the kth smallest element. If the array is already sorted we can just print the k-1th element. But if we have unsorted array we need to sort the array and find the k-1th element but it takes O(nlogn) time. But if we use lomuto partition idea which might takes O(n2) but will works efficiently in average case.
 
@@ -710,7 +710,20 @@ int kthSmallest(int arr[],int n,int k){
     }
     return -1;
 }
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Minimum Difference in an Array:
+ Given an array, we need to find the minimum difference between two numbers. An effiecient approcah would be sort the array and find the differenc between two elements where the difference has lowest.
  
+ int getMinDiff(int arr[], int n){
+    sort(arr, arr + n);
+    int res = INT_MAX;
+    
+    for(int i = 1; i < n; i++){
+        res = min(res, arr[i] - arr[i-1]);
+    }
+    return res;
+}
+
 
 
 
