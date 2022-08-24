@@ -855,7 +855,17 @@ void sort012(int a[], int n)
                 mid++;
         }
     }
-	
+    
+ Lets see how this will work
+ low maintains all the 0's window, mid maintains all 1's window and high checks the array and swaps.
+ for array:{0,1,2,1,1,2} low = 0, mid = 0, high = 5
+ {0,1,2,1,1,2} low = 0, mid = 0, high = 5 => arr[mid] == 0 so it swaps it with arr[low] means by itself in first iteration and increments low and mid. By        						incrementing low we are incrementing the sorted window which has all values with 0.
+ {0,1,2,1,1,2} low = 1, mid = 1, high = 5 => arr[mid] == 1 so it just increments mid++. this condition make sure that all 1's will comes after 0's 
+ {0,1,2,1,1,2} low = 1, mid = 2, high = 5 => arr[mid] == 2 so it swaps with arr[high]. which gives 0,1,2,1,1,2 and decrements high --
+ {0,1,2,1,1,2} low = 1, mid = 2, high = 4 => arr[mid] ==2 so it swaps with arr[high]. which gives 0,1,1,1,2,2 and decrements high--
+ {0,1,1,1,2,2} low = 1, mid = 2, high = 3 => arr[mid] == 1 so it just increments mid++.
+ {0,1,1,1,2,2} low = 1, mid = 3, high = 3 => arr[mid] == 1 so it just increments mid++.
+ {0,1,1,1,2,2} low = 1, mid = 4, high = 3 here mid>high so the iteration stops and the array is sorted with 0's first and 1's next and 2's in the end.
 
 
 
