@@ -867,7 +867,23 @@ void sort012(int a[], int n)
  {0,1,1,1,2,2} low = 1, mid = 3, high = 3 => arr[mid] == 1 so it just increments mid++.
  {0,1,1,1,2,2} low = 1, mid = 4, high = 3 here mid>high so the iteration stops and the array is sorted with 0's first and 1's next and 2's in the end.
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Given an array of N elements and a number K. The task is to arrange array elements according to the absolute difference with K, i. e., element having minimum difference comes first and so on.
+Note : If two or more elements are at equal distance arrange them in same sequence as in the given array.
+Input: N = 5, K = 7
+arr[] = {10, 5, 3, 9, 2}
+Output: 5 9 10 3 2
+Explanation: Sorting the numbers accoding to 
+the absolute difference with 7, we have 
+array elements as 5, 9, 10, 3, 2.
 
+void sortABS(int A[],int N, int k)
+    {
+       //Your code here
+       stable_sort(A, A + N, [&k](int a, int b) -> bool {
+           return abs(a - k) < abs(b - k);
+       });
+    }
 
 
 
