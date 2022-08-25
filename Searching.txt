@@ -530,7 +530,7 @@ int main()
     cout << isPresent(arr, n, sum);
 }
  
- Another variation of the problem:
+ Another variation of the problem: THREE POINTER APPROACH.
  Find triplet in an array which gives sum X :
  bool find3Numbers(int A[], int arr_size, int sum) 
 { 
@@ -566,6 +566,37 @@ int main()
 	// If we reach here, then no triplet was found 
 	return false; 
 } 
+
+ANOTHER DIFFERENT VARIATION OF THIS THREE POINTER APPROACH:
+Count triplets with sum smaller than X
+MediumAccuracy: 49.96%Submissions: 42619Points: 4
+Given an array arr[] of distinct integers of size N and a value sum, the task is to find the count of triplets (i, j, k), having (i<j<k) with the sum of (arr[i] + arr[j] + arr[k]) smaller than the given value sum.
+
+Example 1:
+
+Input: N = 4, sum = 2
+arr[] = {-2, 0, 1, 3}
+Output:  2
+Explanation: Below are triplets with 
+sum less than 2 (-2, 0, 1) and (-2, 0, 3). 
+
+long long countTriplets(long long arr[], int n, long long sum)
+	{
+	    // Your code goes here
+	    sort(arr,arr+n);
+	    long count = 0;
+	    for(int i=0;i<n-2;i++){
+	        long l = i+1,r = n-1;
+	        while(l<r){
+	            if(arr[i]+arr[l]+arr[r]<sum){
+	                count = count+(r-l); // this is an important difference between before problems and this problem. If we already find a minimum sum value
+	                l++;		    // then definitely the sum of smaller numbers less than r is also less than the given sum
+	            }			    // eg: in 5,1,3,4,7 and the i = 0, l = 1, r = 4 , sum = 14, count = 0
+	            else r--;		             if 5+1+7 = 13<14 then all the sum of smaller values less than 7 will be less than 14 right?
+	            		             so count = count+(4-1) = 3 like this we can directly calculate the count in one go. which is easier and clever.
+	    }
+	    return count;
+	}
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
