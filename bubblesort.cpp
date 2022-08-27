@@ -18,7 +18,6 @@ void bubbleSort(int arr[], int n){
         break;
     }
 }
-
 int main() {
 	int a[] = {2, 1, 3, 4};
 	bubbleSort(a, 4);
