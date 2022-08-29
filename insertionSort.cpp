@@ -1,7 +1,6 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-
 void iSort(int arr[],int n){
     
     for(int i=1;i<n;i++){
