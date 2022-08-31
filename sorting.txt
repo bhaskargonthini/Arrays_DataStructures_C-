@@ -968,6 +968,33 @@ int main()
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 MEETIN MAXIMUM NUMBER OF GUESTS:
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+CYCLE SORT:
+
+-- Worst case is O(n2) sorting algorithm
+--Does minimum memory writes and can be useful for cases where memory write are costly.
+	no other algorithm can do less memory writes than cycle sort.
+--Not stable and In-place
+--Usefull to solve questions like minimum swaps to sort an array.
+--QUESTIONS LIKE: MINIMJM SWAPS will be asked in interviews. Cycle sort is best suited here.
+
+Eg: 20,40,50,10,30
+for each element we count the number of elements which are smaller than the current element and places the current element i that respective postiion and then takes the already existing element in that position and count the number of smaller elements less than that element and the cycle continues. 
+
+for 20,40,50,10,30
+-- number of elements smaller than 20 is 1 so 20 will go 2nd position
+	_, 20,50,10,30 and now already existing element 40 will be in cycle now
+-- number of elemets smaller than 40 is 3 so 40 will go to 4th position
+	_,20,50,40,30 now 10 will be in cycle
+-- no element is smaller than 10 so it will go to 1st position
+	10,20,50,40,30 now it will traverse through the array again and checks if there are any pending untraversed elements and stops at 50 and brings 50 into cycle
+--number of elements smaller than 50 is 4 so 50 will go to last postion.
+	10,20,_,40,50 and now 30 will come into the cycle
+--number of elements smaller than 30 is 2 so it will go 3rd postion
+	10,20,30,40,50
+	
+
+
 
 
 
