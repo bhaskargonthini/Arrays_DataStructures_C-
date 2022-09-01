@@ -1015,8 +1015,40 @@ void cycleSortDistinct(int arr[], int n)
 Prepare for other variations of cycle sort by watching the last 3 mins of the video link. Good for interviews.
  ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
+HEAP SORT:
+It is the optimization solution of selection sort, where selection sort finds the largest element in the array and swaps it with the last element. It takes O(N2) but in heap sort we optimizes the code to find the largest element in the array by using MAX heap. MAX heap for increasing order and min heap for decreasing order.
 
+Update this when heap track was completed.
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+COUNTING SORT:
+
+Counting sort works when given an array of n elements with k range elements, we want to sort these elements. counting sort works when the range is smaller.
+
+we take an extra array of size k range and then keep the count of all elements in the indexes of original arrays in which they occur. and later we run a loop to over ride the entire array by alloting the elements from 0-k in sorted order.
+
+watch video for better understanding of optimized soluiton.
+
+void countSort(int arr[], int n, int k) 
+{ 
+    int count[k];
+    for(int i=0;i<k;i++)
+        count[i]=0;
+    for(int i=0;i<n;i++)
+        count[arr[i]]++;
+        
+    for(int i=1;i<k;i++)
+        count[i]=count[i-1]+count[i];
+    
+    int output[n];
+    for(int i=n-1;i>=0;i--){
+        output[count[arr[i]]-1]=arr[i];
+        count[arr[i]]--;
+    }
+    for(int i=0;i<n;i++)
+        arr[i]=output[i];
+    
+} 
 
 
 
