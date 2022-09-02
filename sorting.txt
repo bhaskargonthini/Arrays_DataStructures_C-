@@ -1049,6 +1049,13 @@ void countSort(int arr[], int n, int k)
         arr[i]=output[i];
     
 } 
+watch the video implementataion for better understanding.
+Important points of counting sort:
+-- Not a comparison based algorithm
+-- theta(n+k) time
+--theta(n+k) aux space
+--Stable
+--Used as a subroutine in radix sort.
 
 
 
