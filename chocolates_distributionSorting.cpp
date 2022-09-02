@@ -10,7 +10,6 @@ int minDiff(int arr[],int n,int m){
         res=min(res,arr[i+m-1]-arr[i]);
     return res;
 }
- 
 int main() {
 	
     int arr[]={7,3,2,4,9,12,56};
