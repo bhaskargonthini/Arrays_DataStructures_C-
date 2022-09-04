@@ -11,7 +11,6 @@ int minDiff(int arr[],int n,int m){
     return res;
 }
 int main() {
-	
     int arr[]={7,3,2,4,9,12,56};
 	
 	int n=sizeof(arr)/sizeof(arr[0]);int m=3;
