@@ -1176,25 +1176,39 @@ Explanation: Max element = 6, min = 1,
 second max = 5, second min = 2, and 
 so on... Modified array is : 6 1 5 2 4 3.
 
-
-														DIVIDENT = DIVISOR*QUOTIENT+REMINDER
-																divident = modified value in array.							// can store two values at same index
-																divisor = max element of array+1
-																quotient: new value to be stored
-																reminder: original value.
+DIVIDENT = DIVISOR*QUOTIENT+REMINDER
+divident = modified value in array.							// can store two values at same index
+divisor = max element of array+1
+quotient: new value to be stored
+reminder: original value.
 																
-																we get the original value by taking modulus of max+1 element.
-																we get old value by taking floor value after dividing with max+1 element.
-														eg: 1 2 3 4 5 6  // max = 6 max+1 = 6+1 = 7
-															index 0 = old value = 1
-																	  new value to be placed = 6
-																	7*6+1 = 43 is value at index 0 now.
-																	if we want new value, divide it by max+1 element = 43/7 = 6
-																	if we want old value do modulus = 43%7 = 1.
+we get the original value by taking modulus of max+1 element.
+we get old value by taking floor value after dividing with max+1 element.
+eg: 1 2 3 4 5 6  // max = 6 max+1 = 6+1 = 7
+index 0 = old value = 1
+new value to be placed = 6
+7*6+1 = 43 is value at index 0 now.
+if we want new value, divide it by max+1 element = 43/7 = 6
+if we want old value do modulus = 43%7 = 1.
 															
 eg: 1 2 3 4 5 6
 	6 1 5 2 4 3
 
+working of the problem:
+max+1 = 6+1 = 7
+for even indexes:
+	- 0th index: 1+6%7*7 = 43
+	- 2nd index: 3+5%7*7 = 38
+	- 4th index: 5+4%7*7 = 33
+for odd indexes: 2,4,6
+	-1st index: 2+43%7*7 = 9
+	- 3rd index: 4+2%7*7 = 18
+	- 5th index: 6+38%7*7 = 27
+and we have the modified array as: 43,9,38,18,33,27
+finally when we divide this array with max_elem we will get the modified array without losing any data and without using any extra space:
+43/7 = 6; 9/7 = 1; 38/7 = 5; 18/7 = 2; 33/7 = 4; 27/7 = 3
+
+The final array is: 6,1,5,2,4,3
 
 void rearrange(long long *arr, int n) 
     { 
