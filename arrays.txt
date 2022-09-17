@@ -908,6 +908,8 @@ int main()
 	return 0; 
 } 
 
+Time comp: O(n). same as hashing technique of similar problem. we can use either of the solutions.
+
 Another variation:
 
 		N-BONACCI NUMBERS	
