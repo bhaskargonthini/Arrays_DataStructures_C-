@@ -995,11 +995,48 @@ bool checkEquilibrium(int arr[], int n)
 }
 
 Another variation:
+Given n ranges, we need to find the maximum occuring element in these ranges:
 	MAXIMUM OCCURING ELEMENT.
 	I/P: L[] = {1,2,5,15}
 	     R[] = {5,8,7,18}
 		 
 		 O/P: 5
+		 
+the ranges are: 1-5: 1,2,3,4,5
+		3-8: 2,3,4,5,6,7,8
+		5-7: 5,6,7
+		15-18: 15,16,17,18
+we can use hashtable technique to do this problem but it takes O(n*m) even for larger values. But if the values are in smaller range like 0-1000 then we can apply prefix sum technique to do this problem efficiently.
+
+int maxOcc(int L[], int R[], int n)
+{	
+    	int arr[1000];
+    	
+    	memset(arr, 0, sizeof(arr));
+
+    	for(int i = 0; i < n; i++)
+    	{
+    		arr[L[i]]++;
+
+    		arr[R[i] + 1]--;
+    	}
+
+    	int maxm = arr[0], res = 0;
+
+    	for(int i = 1; i < 1000; i++)
+    	{
+    		arr[i] += arr[i - 1];
+
+    		if(maxm < arr[i])
+    		{
+    			maxm = arr[i];
+
+    			res = i;
+    		}
+    	}
+
+    	return res;
+}
 
 	
 	
