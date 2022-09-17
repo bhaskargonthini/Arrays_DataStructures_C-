@@ -805,6 +805,7 @@ K = 3
 -5+20+7 = 22
 MAX SUB ARRAY WITH K CONSECUTIVE ELEMENTS.
 O/P: 45 ()
+The approach is using sliding window technique:
 
 int maxSum(int arr[], int n, int k)
 {
@@ -851,8 +852,12 @@ vector<int> subarraySum(int arr[], int n, long long s)
     }
 
 Variation of the problem:
+If the window size is not given then we cant apply sliding window technique here.
 
 FIND SUBARRAY WITH GIVEN SUM: Given and unsorted array of non negative integers. Find if there is a sub array with given sum.(CONTIGOUS ElementS ONLYTWO)
+	
+The logic here is we mainatain a variable sized window, in which if the window sum is greater thean the given sum, we simply subtracts the first element and checks again with the given sum. If it still greater than the given sum then we again subtracts the next element from the array. If the window sum becomes less than the given sum then we adds next element after the window. Likewise we can get the solution efficiently without missing anything.	
+	
 	
 /* An efficient program to print subarray with sum as given sum */
 #include<stdio.h> 
