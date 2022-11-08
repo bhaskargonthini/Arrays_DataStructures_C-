@@ -151,7 +151,22 @@ int main() {
     
 }
 -----------------------------------------------------------------------
-REMOVE DUPLICATES FROM THE SORTED ARRAY: Two Pointer algorithm:
+REMOVE DUPLICATES FROM THE SORTED ARRAY: 
+ int remDups(int arr[], int n)
+{
+	int res = 1;
+
+	for(int i = 1; i < n; i++)
+	{
+		if(arr[res - 1] != arr[i])
+		{
+			arr[res] = arr[i];
+			res++;
+		}
+	}
+
+	return res;
+}
 
 
 GIVEN A SORTED ARRAYAND A SUM WE NEED TO FIND IF THERE IS A PAIR WITH A GIVEN SUM:
