@@ -1,7 +1,7 @@
 																		
 																		SEARCHING
 																		
-Binary search: Iterative approach.
+Binary search:  Iterative approach.
 
 #include <iostream>
 using namespace std;
