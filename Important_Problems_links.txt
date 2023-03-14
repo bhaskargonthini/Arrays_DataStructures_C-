@@ -2,7 +2,7 @@ Count the triplets
 EasyAccuracy: 42.82%Submissions: 76015Points: 2
 Given an array of distinct integers. The task is to count all the triplets such that sum of two elements equals the third element.
  
-Example 1:
+Example 1
 
 Input:
 N = 4
@@ -29,7 +29,7 @@ Jon and Arya are playing a game. Rules of game as follows:
           1. Divide that number by 2, 3, 4 or 5 and take floor of result.
           2. Subtract that number by 2, 3, 4 or 5.
 ·   If after making a move the number becomes 1, the player who made the move automatically loses the game.
-·   When number becomes zero, the game will stop and the player who can't make a move loses the game.
+· When number becomes zero, the game will stop and the player who can't make a move loses the game.
 
  
 
