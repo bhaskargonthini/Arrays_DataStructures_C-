@@ -1,4 +1,4 @@
-         --------------------------- ARRAYS DATA STRUCTURE  --------------------------------------------
+         --------------------------- ARRAYS DATA STRUCTURE  ------------------------------------------
  
  VECTORS IN C++:
 	ADVANATGES OF VECTORS IN C++:
