@@ -1,0 +1,141 @@
+AWS Solutions architect top 50 Tips:
+
+Tip 1: High availability = Load balancer + ASG + Multi AZ.
+Whenever there is question on high availability
+rule out the answers saying only load balancer or Auto scaling groups or multi AZ, pick up the answer only if there is load balancer+ASG+Multi AZ is there
+
+TIP 2: Millions of trasactions = Network Load balancer
+       TCP/UDP Traffic = Network Load balancer.
+Whener there is millions of trasactions mentioned in the question, Network load balancer is always correct.
+And also same applies to TCP/UDP traffic also.
+
+TIP 3: Intelligent Load balancer = Application Load balancer
+       SSL termination =  Application Load Balancer
+       HTTP/HTTPS = Application Load balancer
+
+TIP 4: High Availability = Think about only high availability
+If they ask about high availability, think about just high avaialbility only. Don't bother about cost optimization.
+
+TIP 5: Cost Optimization = Think about only cost optimization.
+And vice versa for Cost optimization. If they ask about cost optimization, Think about only cost optimization only. Dont mind about high availability.
+
+TIP 6: HPC(High performance compute) = Amazon Luster/AWS Instance store
+      Big data/haddop = FSX Luster
+    
+TIP 7: Rest API = Amazon API Gateway.
+
+TIP 8: API Gateway = answer is more related to Lambda(most of the cases).
+
+TIP 9: Windows file server share service = SMB/FSX
+      Linux file server share service = NFS
+      
+TIP 10: Restrict S3 bucket access = most likely bucket policies.
+There are several ways to restrict s3 bucket like IAM roles but most likely the answer would be S3 bucket policies only.
+
+TIP 11: Unaware of file movemenet in S3 = S3 intelligent-tiering
+Unaware of file movement: We can't sepcify the accessibility of files like we dont know when to retieve the files and how often we can retrieve them.
+
+TIP 12: S3 replication = S3 versioning is must.
+
+TIP 13: Encrypt RDS instance = Encrypts backups and snapshots.
+When we encrpty RDS instance, the backups and snapshots coming from the RDS are also encrypted.
+
+TIP 14:real time streams = kinesis streams
+
+TIP 15: Near real time streams = kinesis firehose
+
+TIP 16: S3 Encryption = SSE/CSE/AWS enryption
+Minimum 2 questions will come for sure.
+
+TIP 17: Recovering deleted file from S3 =  S3 versioning must be enabled.
+
+TIP 18: NAT Gateway vs NAT Instance - importance must be known
+When we need internet connection in public subnet we must need NAT Gateway, and this NAT Gateway can be created only in public subnet.
+
+TIP 20: Security group: Stateful and only inbbound rules are defined
+Network ACLs = Stateless and both inbound and outbound rules can be defined
+Security groups are first layer of deffense offered at instance level and Network ACLs are offered the second  layer of deffense in subnet level.
+
+TIP 21: common web exploiting - WAF
+Advanced DDOS support = AWS Shield advanced with respective security only.
+
+TIP 22: AWS Cloud watch - Metrics for every AWS service.
+        AWS cloudtrail - API calls tracking
+        AWS config - compliance of resources/auditing & recording compliance of AWS resources.
+        
+TIP 23: RPO = recorvery point objective
+        RTO = recovery time objective.
+
+TIP 24: More load on RDS, what do you do for read-only traffic?
+ans: Create Read Replica and change connection strings in the application.
+
+TIP 25: Big data processing = elastic map reduce.
+
+TIP 26: Cross AWS account access = Through secure token service
+when we want to share the resources in one account to another account and vice versa, we need to use secure token service in AWS.
+
+TIP 27: For web identification = AWS cognito.
+
+TIP 28: VPC peering is not transitive which means if there is VPC peering in between region A and region B, and VPC peering between
+region B and region C then there will be no VPC peering in region A and region C. In that case use trasit gateways = hub & spoke models.
+Use transit gateways = Hub & Spoke model.
+
+TIP 29: Decouple/first in first out(FIFO) = SQS queue(Simple Queue service)
+Push/publisher-subscriber mechanism/fan out = SNS(Simple notification service).
+
+TIP 30: Detailed monitoring = 1 minute interval.
+when we want detailed monitoring in the instance we can enable it in 1 minute interval.
+
+TIP 31: peta bytes movement = snow mobile.
+
+TIP 32: we can only have 1 internet gateway at max  per VPC.
+
+TIP 33: GLOBALLY/CONTENT DISTRIBUTION/WORLWIDE/CACHING = think about cloudfront.
+always remeber and pay attention to these kind of keywrods in all tips.
+
+TIP 34: Gateway end point = only for S3 and dynamo.
+
+TIP 35: Disaster recovery = Multi AZ RDS
+for performance = read replicas
+
+TIP 36: NO SQL = Dynamo DB
+Best for MOBILE/WEB/GAMING/IOT = Dynamo DB
+Unsure of database schema =  Dynamo DB.
+
+TIP 37: business Intelligence/Data Warehousing/peta bytes of data storage = Red shift
+Big data pocessing = EMR(Elastic map reduce)
+If it is for storage red shift is best suited but if it is for data processing elastic map reduce is best suited.
+
+TIP 38: Redis cache is more advanced than memecached
+
+TIP 39: Snowball for around 70 TB
+snowmobile for peta bytes of data
+
+TIP 40: Spikes on holidays = scheduled scaling
+
+TIP 41: Hybrid workload data processing = storage gateway
+for movement+replication = data sync
+
+TIP 42: Low latency with less cost = cloud front
+Media/news = cloud front @ Edge locations.
+
+TIP 43: No data transfer cost between EC2 and S3 in same region.
+there will be no data transfer cost between ec2 and s3 in same region. VERY IMP.
+
+TIP 44: Durable = S3 bucket. durable = can handle high peak and traffic
+
+Tip 45: EFS for Linux and FSX for windows
+
+TIP 46: Variable workloads = spot fleet.
+A Spot Fleet is a collection, or fleet, of Spot Instances, and optionally On-Demand Instances. The Spot Fleet attempts to launch the number of Spot Instances
+and On-Demand Instances to meet the target capacity that you specified in the Spot Fleet request.
+
+TIP 47: Less than 1 sec = Aurora
+When we need less than 1 sec of response or replication then the answer is most probably aurora.
+
+TIP 48: Failover at global DNS level =  Global accelerator
+when we need failover of route 53 at global level then it is possible with global accelerator.
+
+TIP 49: infrastructure as a code/infra as a code = cloud formation.
+
+TIP 50: Critical = fault tolerance.
